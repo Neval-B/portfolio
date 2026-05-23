@@ -1,0 +1,17 @@
+.projects{
+padding:100px 8%;
+min-height:100vh;
+}
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+margin-top:50px;
+}
+
+.project-card{
+background:#0f172a;
+padding:30px;
+border-radius:12px;
+}
