@@ -1,0 +1,42 @@
+.contact-section {
+  min-height: 100vh;
+  padding: 100px 5%;
+  background: #111112;
+}
+
+.contact-section h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.contact-section p {
+  color: #c7c7c7;
+  max-width: 650px;
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: #1b1b1d;
+  border: 1px solid #333;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.contact-links a:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
