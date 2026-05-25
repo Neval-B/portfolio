@@ -26,7 +26,7 @@ function Contact() {
           LinkedIn
         </a>
 
-        <a href="https://github.com/" target="_blank" rel="noreferrer">
+        <a href="https://github.com/Neval-B" target="_blank" rel="noreferrer">
           <FaGithub />
           GitHub
         </a>
