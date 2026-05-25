@@ -13,8 +13,24 @@ function Navbar() {
       </nav>
 
       <div className="socials">
-        <FaGithub />
-        <FaLinkedin />
+
+         <a
+          href="https://github.com/Neval-B"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
+        >
+          <FaGithub />
+        </a>
+
+         <a
+          href="https://www.linkedin.com/in/neval-babu/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin />
+        </a>
       </div>
     </header>
   );
