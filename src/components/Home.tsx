@@ -1,13 +1,25 @@
 import {
   FaJava,
   FaPython,
-  FaReact,
-  FaGitAlt
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+  FaAndroid,
+  FaTerminal,
+  FaTasks,
+  FaProjectDiagram,
+  FaNetworkWired
 } from "react-icons/fa";
 
 import {
-  SiTypescript,
-  SiMysql
+  SiCplusplus,
+  SiJavascript,
+  SiPostman,
+  SiSwagger,
+  SiMysql,
+  SiSpring,
+  SiReact,
+  SiTypescript
 } from "react-icons/si";
 
 import "./Home.css";
@@ -15,13 +27,38 @@ import "./Home.css";
 function Home() {
 
 const skills = [
-{icon:<FaJava/>,name:"Java"},
-{icon:<FaPython/>,name:"Python"},
-{icon:<FaReact/>,name:"React"},
-{icon:<SiTypescript/>,name:"TypeScript"},
-{icon:<SiMysql/>,name:"SQL"},
-{icon:<FaGitAlt/>,name:"Git"}
-]
+
+{ icon: <FaPython />, name: "Python" },
+{ icon: <FaJava />, name: "Java" },
+{ icon: <SiCplusplus />, name: "C++" },
+{ icon: <SiJavascript />, name: "JavaScript" },
+{ icon: <SiReact />, name: "React" },
+{ icon: <SiTypescript />, name: "TypeScript" },
+{ icon: <FaHtml5 />, name: "HTML" },
+{ icon: <FaCss3Alt />, name: "CSS" },
+
+{ icon: <FaNetworkWired />, name: "REST APIs" },
+
+{ icon: <SiSpring />, name: "Spring MVC" },
+
+{ icon: <SiPostman />, name: "Postman" },
+
+{ icon: <SiSwagger />, name: "Swagger" },
+
+{ icon: <FaAndroid />, name: "Android Studio" },
+
+{ icon: <SiMysql />, name: "SQL" },
+
+{ icon: <FaGitAlt />, name: "Git" },
+
+{ icon: <FaTasks />, name: "Agile" },
+
+{ icon: <FaProjectDiagram />, name: "SDLC" },
+
+{ icon: <FaTerminal />, name: "Shell Scripting" }
+
+];
+
 
 return (
 
