@@ -36,29 +36,18 @@ const skills = [
 { icon: <SiTypescript />, name: "TypeScript" },
 { icon: <FaHtml5 />, name: "HTML" },
 { icon: <FaCss3Alt />, name: "CSS" },
-
 { icon: <FaNetworkWired />, name: "REST APIs" },
-
 { icon: <SiSpring />, name: "Spring MVC" },
-
 { icon: <SiPostman />, name: "Postman" },
-
 { icon: <SiSwagger />, name: "Swagger" },
-
 { icon: <FaAndroid />, name: "Android Studio" },
-
 { icon: <SiMysql />, name: "SQL" },
-
 { icon: <FaGitAlt />, name: "Git" },
-
 { icon: <FaTasks />, name: "Agile" },
-
 { icon: <FaProjectDiagram />, name: "SDLC" },
-
 { icon: <FaTerminal />, name: "Shell Scripting" }
 
 ];
-
 
 return (
 
@@ -79,16 +68,29 @@ Computer Science Graduate
 </h2>
 
 <p className="description">
-As a driven and enthusiastic Computer Science student at the University of Leicester, I have
-cultivated a strong foundation in software development, problem-solving, and collaborative
-teamwork. My passion for technology stems from an early interest in coding, which has since
-grown through academic projects, industry-oriented assignments, and practical work
-experiences. 
+As a driven and enthusiastic Computer Science graduate from the University of Leicester, I have cultivated a strong foundation in software development, problem-solving and collaborative teamwork. My passion for technology grew through academic projects, practical development work and hands-on experience building software applications.
 </p>
 
 <div className="buttons">
-<a href="#projects">Projects</a>
-<a href="#contact">Contact Me</a>
+
+<a href="#projects">
+Projects
+</a>
+
+<a
+href="mailto:Neval271@gmail.com"
+>
+Contact Me
+</a>
+
+</div>
+
+<div className="skills-title">
+
+<h3>
+Tech Stack & Skills
+</h3>
+
 </div>
 
 <div className="skills">
@@ -96,10 +98,22 @@ experiences.
 {
 skills.map((skill)=>(
 
-<div className="card">
+<div
+className="card"
+key={skill.name}
+>
+
+<span>
 
 {skill.icon}
-<p>{skill.name}</p>
+
+</span>
+
+<p>
+
+{skill.name}
+
+</p>
 
 </div>
 
@@ -116,4 +130,4 @@ skills.map((skill)=>(
 
 }
 
-export default Home
+export default Home;
