@@ -6,45 +6,38 @@ function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const sections = ["home", "projects", "contact"];
+    const handleScroll = () => {
+      const sections = ["home", "projects", "contact"];
+      const scrollPosition = window.scrollY + 160;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+      for (const section of sections) {
+        const element = document.getElementById(section);
+
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
           }
-        });
-      },
-      {
-        threshold: 0.5,
+        }
       }
-    );
+    };
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => observer.disconnect();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header className="navbar">
-
       <a href="#home" className="logo">
         NB
       </a>
 
       <nav className="nav-menu">
-
-        <a
-          href="#home"
-          className={activeSection === "home" ? "active" : ""}
-        >
+        <a href="#home" className={activeSection === "home" ? "active" : ""}>
           Home
         </a>
 
@@ -61,15 +54,14 @@ function Navbar() {
         >
           Contact
         </a>
-
       </nav>
 
       <div className="socials">
-
         <a
-          href="https://github.com/Neval-B"
+          href="https://github.com/YOUR_GITHUB_USERNAME"
           target="_blank"
           rel="noreferrer"
+          aria-label="GitHub"
         >
           <FaGithub />
         </a>
@@ -78,12 +70,11 @@ function Navbar() {
           href="https://www.linkedin.com/in/neval-babu/"
           target="_blank"
           rel="noreferrer"
+          aria-label="LinkedIn"
         >
           <FaLinkedin />
         </a>
-
       </div>
-
     </header>
   );
 }
