@@ -7,6 +7,9 @@ import {
   FaGamepad,
   FaCloud,
   FaDatabase,
+  FaGithub,
+  FaExternalLinkAlt,
+  FaCode,
 } from "react-icons/fa";
 
 import {
@@ -16,12 +19,31 @@ import {
   SiSwagger,
   SiRedis,
   SiGitlab,
+  SiReact,
+  SiTypescript,
+  SiVite,
 } from "react-icons/si";
 
 import "./Projects.css";
 
 function Projects() {
   const projects = [
+    {
+      title: "Portfolio Website",
+      subtitle: "Personal portfolio built with React and TypeScript",
+      icon: <FaCode />,
+      description:
+        "A personal portfolio website built using Vite, React and TypeScript to showcase my skills, projects and contact information.",
+      tech: ["Vite", "React", "TypeScript", "CSS", "GitHub"],
+      highlights: [
+        "Built a responsive portfolio layout",
+        "Added skill icons and modern project cards",
+        "Implemented smooth scrolling and active navbar highlighting",
+      ],
+      icons: [<SiVite />, <SiReact />, <SiTypescript />, <FaGithub />],
+      repoLink: "https://github.com/Neval-B/portfolio",
+      demoLink: "https://neval-babu-portfolio.netlify.app",
+    },
     {
       title: "IBM SkillsBuild Companion App",
       subtitle: "Gamified learning web application",
@@ -42,7 +64,14 @@ function Projects() {
       icon: <FaAndroid />,
       description:
         "Built a timetable management system to manage modules, sessions and convenor data through backend APIs and an Android interface.",
-      tech: ["Java", "Spring MVC", "REST APIs", "Swagger", "Postman", "Android Studio"],
+      tech: [
+        "Java",
+        "Spring MVC",
+        "REST APIs",
+        "Swagger",
+        "Postman",
+        "Android Studio",
+      ],
       highlights: [
         "Created REST APIs for timetable data management",
         "Used Swagger/OpenAPI and Postman for testing",
@@ -122,6 +151,20 @@ function Projects() {
                 <span key={index}>{icon}</span>
               ))}
             </div>
+
+            {project.repoLink && project.demoLink && (
+              <div className="project-links">
+                <a href={project.repoLink} target="_blank" rel="noreferrer">
+                  <FaGithub />
+                  Repo
+                </a>
+
+                <a href={project.demoLink} target="_blank" rel="noreferrer">
+                  <FaExternalLinkAlt />
+                  Live Demo
+                </a>
+              </div>
+            )}
           </article>
         ))}
       </div>

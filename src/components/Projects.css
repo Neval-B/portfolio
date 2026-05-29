@@ -160,3 +160,34 @@
     padding: 24px;
   }
 }
+
+.project-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #38bdf8;
+  color: #020617;
+  padding: 11px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.project-links a:nth-child(2) {
+  background: transparent;
+  color: white;
+  border: 1px solid #334155;
+}
+
+.project-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(56, 189, 248, 0.18);
+}
