@@ -73,15 +73,25 @@ As a driven and enthusiastic Computer Science graduate from the University of Le
 
 <div className="buttons">
 
-<a href="#projects">
-Projects
-</a>
+<div className="buttons">
 
-<a
-href="mailto:Neval271@gmail.com"
->
-Contact Me
-</a>
+  <a href="#projects">
+    Projects
+  </a>
+
+  <a
+    href="/Neval_Babu_CV.pdf"
+    target="_blank"
+    rel="noreferrer"
+  >
+    View CV
+  </a>
+
+  <a href="mailto:Neval271@gmail.com">
+    Contact Me
+  </a>
+
+</div>
 
 </div>
 
