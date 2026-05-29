@@ -58,7 +58,7 @@ function Navbar() {
 
       <div className="socials">
         <a
-          href="https://github.com/YOUR_GITHUB_USERNAME"
+          href="https://github.com/Neval-B"
           target="_blank"
           rel="noreferrer"
           aria-label="GitHub"
