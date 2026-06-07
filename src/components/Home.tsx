@@ -64,11 +64,11 @@ Hi, I'm <span>Neval Babu</span>
 </h1>
 
 <h2>
-Computer Science Graduate
+Junior Software Engineer
 </h2>
 
 <p className="description">
-As a driven and enthusiastic Computer Science graduate from the University of Leicester, I have cultivated a strong foundation in software development, problem-solving and collaborative teamwork. My passion for technology grew through academic projects, practical development work and hands-on experience building software applications.
+As a driven and enthusiastic junior software engineer, I have built a solid foundation in software development, problem-solving, and collaborative teamwork. My passion for technology has been shaped through academic projects, practical development experience, and hands-on work designing and building software applications.
 </p>
 
 <div className="buttons">
