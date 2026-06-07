@@ -30,7 +30,6 @@ function Projects() {
   const projects = [
     {
       title: "Portfolio Website",
-      subtitle: "Personal portfolio built with React and TypeScript",
       icon: <FaCode />,
       description:
         "A personal portfolio website built using Vite, React and TypeScript to showcase my skills, projects and contact information.",
@@ -46,7 +45,6 @@ function Projects() {
     },
     {
       title: "IBM SkillsBuild Companion App",
-      subtitle: "Gamified learning web application",
       icon: <FaUsers />,
       description:
         "Developed a gamified web application for IBM SkillsBuild within an 8-member team to create a more engaging learning experience.",
@@ -60,7 +58,6 @@ function Projects() {
     },
     {
       title: "University Timetable Management System",
-      subtitle: "Backend API and Android application",
       icon: <FaAndroid />,
       description:
         "Built a timetable management system to manage modules, sessions and convenor data through backend APIs and an Android interface.",
@@ -81,7 +78,6 @@ function Projects() {
     },
     {
       title: "Private Cloud Whiteboard",
-      subtitle: "Cloud-based collaborative whiteboard",
       icon: <FaCloud />,
       description:
         "Distributed a shared interactive whiteboard application across multiple Microsoft Azure App Service nodes.",
@@ -95,7 +91,6 @@ function Projects() {
     },
     {
       title: "Scrabble Game",
-      subtitle: "Python game with custom logic",
       icon: <FaGamepad />,
       description:
         "Developed an interactive Scrabble game supporting both player-versus-player and player-versus-computer gameplay modes.",
@@ -128,7 +123,6 @@ function Projects() {
 
               <div>
                 <h3>{project.title}</h3>
-                <p className="project-subtitle">{project.subtitle}</p>
               </div>
             </div>
 
