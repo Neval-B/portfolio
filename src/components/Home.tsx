@@ -68,7 +68,7 @@ Junior Software Engineer
 </h2>
 
 <p className="description">
-As a driven and enthusiastic junior software engineer, I have built a solid foundation in software development, problem-solving, and collaborative teamwork. My passion for technology has been shaped through academic projects, practical development experience, and hands-on work designing and building software applications.
+As a driven and enthusiastic junior software engineer, I have built a solid foundation in software development, problem-solving, and collaborative teamwork. I am a First-Class Computer Science graduate, and my passion for technology has been shaped through academic projects, practical development experience, and hands-on work designing and building software applications.
 </p>
 
 <div className="buttons">
