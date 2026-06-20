@@ -24,63 +24,32 @@ import {
   SiVite,
 } from "react-icons/si";
 
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import "./Projects.css";
 
 function Projects() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const [activeImage, setActiveImage] = useState<string | null>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [activeScreenshots, setActiveScreenshots] = useState<string[]>([]);
+  const scrabbleScreenshots = [
+    "/images/scrabble/scrab-1.jpg",
+    "/images/scrabble/scrab-2.jpg",
+    "/images/scrabble/scrab-3.jpg",
+    "/images/scrabble/scrab-4.jpg",
+    "/images/scrabble/scrab-5.jpg",
+    "/images/scrabble/scrab-6.jpg",
+    "/images/scrabble/scrab-7.jpg",
+    "/images/scrabble/scrab-8.jpg",
+  ];
 
-    const openLightbox = (screenshots: string[], index: number) => {
-      setActiveScreenshots(screenshots);
-      setActiveIndex(index);
-      setActiveImage(screenshots[index]);
-    };
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % scrabbleScreenshots.length);
+  };
 
-    const closeLightbox = () => {
-      setActiveImage(null);
-    };
-
-    const showPrevious = () => {
-      const newIndex =
-        activeIndex === 0 ? activeScreenshots.length - 1 : activeIndex - 1;
-
-      setActiveIndex(newIndex);
-      setActiveImage(activeScreenshots[newIndex]);
-    };
-
-    const showNext = () => {
-      const newIndex =
-        activeIndex === activeScreenshots.length - 1 ? 0 : activeIndex + 1;
-
-      setActiveIndex(newIndex);
-      setActiveImage(activeScreenshots[newIndex]);
-    };
-
-    useEffect(() => {
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (!activeImage) return;
-
-        if (event.key === "ArrowLeft") {
-          showPrevious();
-        }
-
-        if (event.key === "ArrowRight") {
-          showNext();
-        }
-
-        if (event.key === "Escape") {
-          closeLightbox();
-        }
-      };
-
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    });
+  const previousImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? scrabbleScreenshots.length - 1 : prev - 1
+    );
+  };
 
   const projects = [
     {
@@ -156,16 +125,7 @@ function Projects() {
         "Implemented custom scoring and gameplay logic",
       ],
       icons: [<FaPython />, <FaGamepad />],
-       screenshots: [
-    "/images/scrabble/scrab-1.jpg",
-    "/images/scrabble/scrab-2.jpg",
-    "/images/scrabble/scrab-3.jpg",
-    "/images/scrabble/scrab-4.jpg",
-    "/images/scrabble/scrab-5.jpg",
-    "/images/scrabble/scrab-6.jpg",
-    "/images/scrabble/scrab-7.jpg",
-    "/images/scrabble/scrab-8.jpg",
-  ],
+      hasSlider: true,
     },
   ];
 
@@ -206,35 +166,56 @@ function Projects() {
             </ul>
 
             <div className="project-tech-showcase">
-
-            <div className="project-icon-row">
-              {project.icons.map((icon, index) => (
-                <span key={index}>{icon}</span>
-              ))}
+              <div className="project-icon-row">
+                {project.icons.map((icon, index) => (
+                  <span key={index}>{icon}</span>
+                ))}
+              </div>
             </div>
 
-          </div>
+            {project.hasSlider && (
+              <div className="screenshot-gallery">
+                <h4>Screenshots</h4>
 
-          {project.screenshots && (
-          <div className="screenshot-gallery">
-            <h4>Screenshots</h4>
+                <div className="slider-container">
+                  <button
+                    type="button"
+                    className="slider-arrow left"
+                    onClick={previousImage}
+                  >
+                    ‹
+                  </button>
 
-            <div className="screenshot-grid">
-              {project.screenshots.map((image, index) => (
-                <button
-                  type="button"
-                  onClick={() => openLightbox(project.screenshots!, index)}
-                  key={image}
-                  className="screenshot-button"
-                >
-                  <img src={image} alt={`${project.title} screenshot`} />
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+                  <img
+                    src={scrabbleScreenshots[currentImageIndex]}
+                    alt="Scrabble screenshot"
+                    className="slider-image"
+                  />
 
-            
+                  <button
+                    type="button"
+                    className="slider-arrow right"
+                    onClick={nextImage}
+                  >
+                    ›
+                  </button>
+                </div>
+
+                <div className="slider-dots">
+                  {scrabbleScreenshots.map((_, index) => (
+                    <button
+                      type="button"
+                      key={index}
+                      className={`dot ${
+                        currentImageIndex === index ? "active-dot" : ""
+                      }`}
+                      onClick={() => setCurrentImageIndex(index)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
             {project.repoLink && project.demoLink && (
               <div className="project-links">
                 <a href={project.repoLink} target="_blank" rel="noreferrer">
@@ -251,28 +232,6 @@ function Projects() {
           </article>
         ))}
       </div>
-      
-    {activeImage && (
-    <div className="lightbox">
-      <button className="close-btn" onClick={closeLightbox}>
-        ×
-      </button>
-
-      <button className="arrow-btn left-arrow" onClick={showPrevious}>
-        ‹
-      </button>
-
-      <img src={activeImage} alt="Scrabble screenshot enlarged" />
-
-      <button className="arrow-btn right-arrow" onClick={showNext}>
-        ›
-      </button>
-
-      <p className="image-counter">
-        {activeIndex + 1} / {activeScreenshots.length}
-      </p>
-    </div>
-  )}
     </section>
   );
 }
