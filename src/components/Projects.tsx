@@ -10,6 +10,7 @@ import {
   FaGithub,
   FaExternalLinkAlt,
   FaCode,
+  FaFutbol,
 } from "react-icons/fa";
 
 import {
@@ -22,6 +23,10 @@ import {
   SiReact,
   SiTypescript,
   SiVite,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiPrisma,
 } from "react-icons/si";
 
 import { useState } from "react";
@@ -52,6 +57,42 @@ function Projects() {
   };
 
   const projects = [
+
+    {
+      title: "FootballPulse",
+      icon: <FaFutbol />,
+      description:
+        "A full-stack football application that allows users to create accounts, explore football clubs and manage their favourite teams through a React frontend and REST API.",
+      tech: [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "JWT",
+        "REST APIs",
+      ],
+     highlights: [
+      "Built a full-stack football news platform using React, TypeScript, Express and PostgreSQL",
+      "Implemented secure user authentication with JWT, protected routes and encrypted passwords",
+      "Designed and managed a PostgreSQL database using Prisma ORM with relational data models",
+      "Developed favourite clubs and article bookmarking features with RESTful CRUD APIs",
+      "Integrated live football news from RSS feeds and automated updates with a background scheduler",
+      "Deployed the frontend on Netlify and the backend with PostgreSQL on Railway",
+    ],
+      icons: [
+        <SiReact />,
+        <SiTypescript />,
+        <SiNodedotjs />,
+        <SiExpress />,
+        <SiPostgresql />,
+        <SiPrisma />,
+      ],
+      repoLink: "https://github.com/Neval-B/FootballPulse",
+      demoLink: "https://nb-footballpulse.netlify.app/",
+      
+    },
     {
       title: "Portfolio Website",
       icon: <FaCode />,
