@@ -59,7 +59,7 @@ function Projects() {
   const projects = [
 
     {
-      title: "FootballPulse",
+      title: "PitchBrief",
       icon: <FaFutbol />,
       description:
         "A full-stack football application that allows users to create accounts, explore football clubs and manage their favourite teams through a React frontend and REST API.",
@@ -89,8 +89,8 @@ function Projects() {
         <SiPostgresql />,
         <SiPrisma />,
       ],
-      repoLink: "https://github.com/Neval-B/FootballPulse",
-      demoLink: "https://nb-footballpulse.netlify.app/",
+      repoLink: "https://github.com/Neval-B/PitchBrief",
+      demoLink: "https://pitchbrief.netlify.app/",
       
     },
     {
