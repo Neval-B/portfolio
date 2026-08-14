@@ -6,3 +6,31 @@ section {
   scroll-margin-top: 110px;
 }
 
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  padding-top: 89px;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding-top: 120px;
+  }
+}
