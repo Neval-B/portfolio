@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 import type { CSSProperties } from "react";
 
-import "./Contact.css";
+import "../styles/Contact.css";
 
 function Contact() {
   return (

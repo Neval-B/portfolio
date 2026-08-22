@@ -432,11 +432,6 @@ body {
   .skills { grid-template-columns: 1fr; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
-  .home h1 span, .scroll-cue i::after { animation: none !important; }
-}
 
 /* Refined twilight palette */
 

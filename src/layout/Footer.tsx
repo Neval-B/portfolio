@@ -1,5 +1,5 @@
 import { FaArrowUp, FaGithub, FaLinkedin } from "react-icons/fa";
-import "./Footer.css";
+import "../styles/Footer.css";
 
 function Footer() {
   return (

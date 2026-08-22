@@ -1,10 +1,17 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import "./Navbar.css";
+import type { MotionPreference } from "../App";
+import "../styles/Navbar.css"
 
 const sectionIds = ["home", "projects", "contact"];
+const motionPreferences: MotionPreference[] = ["on", "off", "auto"];
 
-function Navbar() {
+interface NavbarProps {
+  motionPreference: MotionPreference;
+  onMotionPreferenceChange: (preference: MotionPreference) => void;
+}
+
+function Navbar({ motionPreference, onMotionPreferenceChange }: NavbarProps) {
   const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -64,6 +71,13 @@ function Navbar() {
     setActiveSection(id);
   };
 
+  const cycleMotionPreference = () => {
+    const currentIndex = motionPreferences.indexOf(motionPreference);
+    const nextIndex = (currentIndex + 1) % motionPreferences.length;
+
+    onMotionPreferenceChange(motionPreferences[nextIndex]);
+  };
+
   return (
     <>
     <header className="navbar">
@@ -100,6 +114,16 @@ function Navbar() {
         <a href="https://www.linkedin.com/in/neval-babu/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
           <FaLinkedin />
         </a>
+        <button
+          type="button"
+          className="motion-trigger"
+          onClick={cycleMotionPreference}
+          aria-label={`Motion is set to ${motionPreference}. Change motion preference`}
+          title="Cycle motion: on, off, auto"
+        >
+          <span aria-hidden="true" />
+          {motionPreference}
+        </button>
         <button
           type="button"
           className="command-trigger"

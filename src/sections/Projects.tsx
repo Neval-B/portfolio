@@ -37,7 +37,7 @@ import {
   type TouchEvent,
 } from "react";
 import { createPortal } from "react-dom";
-import "./Projects.css";
+import "../styles/Projects.css";
 
 function Projects() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

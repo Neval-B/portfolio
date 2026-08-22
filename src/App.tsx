@@ -1,20 +1,57 @@
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import Navbar from "./layout/Navbar";
+import Home from "./sections/Home";
+import Projects from "./sections/Projects";
+import Contact from "./sections/Contact";
+import Footer from "./layout/Footer";
 import { useEffect, useState } from "react";
 import "./App.css";
 
+export type MotionPreference = "on" | "off" | "auto";
+
+const getInitialMotionPreference = (): MotionPreference => {
+  const savedPreference = localStorage.getItem("motion-preference");
+
+  return savedPreference === "on" ||
+    savedPreference === "off" ||
+    savedPreference === "auto"
+    ? savedPreference
+    : "on";
+};
+
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [motionPreference, setMotionPreference] =
+    useState<MotionPreference>(getInitialMotionPreference);
+  const [systemPrefersReducedMotion, setSystemPrefersReducedMotion] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  const motionEnabled =
+    motionPreference === "on" ||
+    (motionPreference === "auto" && !systemPrefersReducedMotion);
+  const [showIntro, setShowIntro] = useState(motionEnabled);
   const [introLeaving, setIntroLeaving] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateSystemPreference = () =>
+      setSystemPrefersReducedMotion(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", updateSystemPreference);
+    return () => mediaQuery.removeEventListener("change", updateSystemPreference);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("motion-preference", motionPreference);
+    document.documentElement.dataset.motion = motionEnabled ? "on" : "off";
+
+    if (!motionEnabled) {
       setShowIntro(false);
-      return;
+      setIntroLeaving(false);
+      document.body.classList.remove("intro-active");
     }
+  }, [motionEnabled, motionPreference]);
+
+  useEffect(() => {
+    if (!motionEnabled || !showIntro) return;
 
     document.body.classList.add("intro-active");
     const leaveTimer = window.setTimeout(() => setIntroLeaving(true), 1650);
@@ -28,7 +65,7 @@ function App() {
       window.clearTimeout(removeTimer);
       document.body.classList.remove("intro-active");
     };
-  }, []);
+  }, [motionEnabled, showIntro]);
 
   useEffect(() => {
     const updateAmbientLight = (event: PointerEvent) => {
@@ -51,7 +88,7 @@ function App() {
 
     const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (!motionEnabled) {
       revealItems.forEach((item) => item.classList.add("is-visible"));
       return;
     }
@@ -69,7 +106,7 @@ function App() {
 
     revealItems.forEach((item) => revealObserver.observe(item));
     return () => revealObserver.disconnect();
-  }, [showIntro]);
+  }, [motionEnabled, showIntro]);
 
   const skipIntro = () => {
     setIntroLeaving(true);
@@ -106,7 +143,10 @@ function App() {
         <span className="light-particle particle-three" />
       </div>
 
-      <Navbar />
+      <Navbar
+        motionPreference={motionPreference}
+        onMotionPreferenceChange={setMotionPreference}
+      />
 
       <main>
         <Home />

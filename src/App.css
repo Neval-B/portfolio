@@ -120,15 +120,6 @@ body.intro-active { overflow: hidden; }
   .intro-ring-two { width: 112vw; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .site-intro { display: none; }
-  [data-reveal], [data-reveal].is-visible {
-    opacity: 1;
-    translate: none;
-    filter: none;
-    transition: none;
-  }
-}
 
 /* Visible futuristic ambient background */
 
@@ -262,8 +253,24 @@ main {
   .ribbon-three { top: 31%; }
   .ribbon-four { top: 50%; }
 }
+html[data-motion="off"] {
+  scroll-behavior: auto;
+}
 
-@media (prefers-reduced-motion: reduce) {
-  .violet-horizon, .energy-ribbon, .light-particle { animation: none; }
-  .ambient-core { transition: none; }
+html[data-motion="off"] *,
+html[data-motion="off"] *::before,
+html[data-motion="off"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-delay: 0ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  transition-delay: 0ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-motion="off"] [data-reveal],
+html[data-motion="off"] [data-reveal].is-visible {
+  opacity: 1;
+  translate: none;
+  filter: none;
 }

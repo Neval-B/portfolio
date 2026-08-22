@@ -484,13 +484,6 @@
   .project-links a { justify-content: center; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .project-card, .project-icon-row span, .project-links a, .slider-arrow, .dot, .case-study-toggle { transition: none; }
-  .project-card { animation: none !important; }
-  .project-case-study, .architecture-flow i::after { animation: none; }
-  .slider-image { transition: none; }
-}
-
 /* Refined twilight project palette */
 .projects-section { background: #0d1424; }
 .projects-section::before { -webkit-text-stroke-color: rgba(143, 165, 232, 0.055); }
@@ -708,9 +701,6 @@
   .lightbox-help { font-size: 9px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .image-lightbox, .lightbox-image-stage img { animation: none; transition: none; }
-}
 
 /* Reveal the ambient light field */
 .projects-section { background: rgba(13, 20, 36, 0.42); backdrop-filter: blur(0.5px); }

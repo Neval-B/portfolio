@@ -192,9 +192,7 @@
   .contact-signoff { margin-top: 58px; font-size: clamp(2.5rem, 14vw, 4rem); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .contact-link, .contact-arrow, .contact-signoff span { transition: none; }
-}
+
 
 /* Refined twilight contact palette */
 .contact-section { background: #0a1020; border-top-color: #2b3853; }

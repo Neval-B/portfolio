@@ -34,7 +34,7 @@ import {
   SiVitest,
 } from "react-icons/si";
 import type { CSSProperties, PointerEvent } from "react";
-import "./Home.css";
+import "../styles/Home.css";
 
 const skills = [
   { icon: <FaPython />, name: "Python" },
