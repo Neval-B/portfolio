@@ -54,11 +54,15 @@ function App() {
     if (!motionEnabled || !showIntro) return;
 
     document.body.classList.add("intro-active");
-    const leaveTimer = window.setTimeout(() => setIntroLeaving(true), 1650);
+    const isMobile = window.matchMedia("(max-width: 600px)").matches;
+    const leaveDelay = isMobile ? 750 : 1050;
+    const removeDelay = isMobile ? 1100 : 1500;
+
+    const leaveTimer = window.setTimeout(() => setIntroLeaving(true), leaveDelay);
     const removeTimer = window.setTimeout(() => {
       setShowIntro(false);
       document.body.classList.remove("intro-active");
-    }, 2250);
+    }, removeDelay);
 
     return () => {
       window.clearTimeout(leaveTimer);

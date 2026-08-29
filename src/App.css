@@ -32,11 +32,11 @@ img {
 [data-reveal] {
   opacity: 0;
   translate: 0 34px;
-  filter: blur(5px);
+  filter: blur(3px);
   transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    translate 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.75s ease;
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.55s ease;
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -81,7 +81,7 @@ body.intro-active { overflow: hidden; }
   height: 50%;
   z-index: 1;
   background: #10182a;
-  transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
 }
 .site-intro::before { top: 0; }
 .site-intro::after { bottom: 0; }
@@ -96,13 +96,13 @@ body.intro-active { overflow: hidden; }
 .intro-ring { position: relative; z-index: 2; }
 
 .intro-monogram { display: flex; align-items: center; gap: 15px; font-size: clamp(4rem, 12vw, 8.5rem); font-weight: 720; line-height: 0.85; letter-spacing: -0.08em; }
-.intro-monogram span { opacity: 0; transform: translateY(25px); animation: intro-letter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.intro-monogram span:last-child { color: #93a9e6; animation-delay: 0.12s; }
-.intro-monogram i { width: 1px; height: clamp(55px, 9vw, 105px); background: rgba(232, 235, 244, 0.26); transform: scaleY(0); animation: intro-divider 0.55s ease 0.25s forwards; }
-.site-intro > p { margin: 24px 0 18px; color: #a7aec2; font-size: clamp(10px, 1.3vw, 12px); font-weight: 700; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; opacity: 0; animation: intro-copy 0.55s ease 0.5s forwards; }
+.intro-monogram span { opacity: 0; transform: translateY(25px); animation: intro-letter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.intro-monogram span:last-child { color: #93a9e6; animation-delay: 0.08s; }
+.intro-monogram i { width: 1px; height: clamp(55px, 9vw, 105px); background: rgba(232, 235, 244, 0.26); transform: scaleY(0); animation: intro-divider 0.4s ease 0.15s forwards; }
+.site-intro > p { margin: 24px 0 18px; color: #a7aec2; font-size: clamp(10px, 1.3vw, 12px); font-weight: 700; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; opacity: 0; animation: intro-copy 0.4s ease 0.28s forwards; }
 .intro-progress { width: min(270px, 58vw); height: 1px; overflow: hidden; background: rgba(143, 165, 232, 0.13); }
-.intro-progress span { display: block; width: 100%; height: 100%; background: #93a9e6; transform: translateX(-101%); animation: intro-progress 1.25s cubic-bezier(0.65, 0, 0.35, 1) 0.25s forwards; }
-.site-intro > button { margin-top: 22px; padding: 6px 9px; color: #747f99; font-family: inherit; font-size: 10px; font-weight: 700; line-height: 1; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; background: transparent; border: 0; opacity: 0; animation: intro-copy 0.4s ease 0.8s forwards; }
+.intro-progress span { display: block; width: 100%; height: 100%; background: #93a9e6; transform: translateX(-101%); animation: intro-progress 0.85s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards; }
+.site-intro > button { margin-top: 22px; padding: 6px 9px; color: #747f99; font-family: inherit; font-size: 10px; font-weight: 700; line-height: 1; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; background: transparent; border: 0; opacity: 0; animation: intro-copy 0.3s ease 0.5s forwards; }
 .site-intro > button:hover { color: #e8ebf4; }
 .intro-ring { position: absolute; width: min(46vw, 520px); aspect-ratio: 1; border: 1px solid rgba(143, 165, 232, 0.09); border-radius: 50%; animation: ring-turn 13s linear infinite; }
 .intro-ring-two { width: min(67vw, 760px); border-color: rgba(135, 200, 184, 0.07); animation-duration: 18s; animation-direction: reverse; }
@@ -116,6 +116,16 @@ body.intro-active { overflow: hidden; }
 @keyframes ring-turn { to { transform: rotate(360deg); } }
 
 @media (max-width: 600px) {
+  [data-reveal] {
+    translate: 0 22px;
+    filter: blur(2px);
+    transition-duration: 0.4s;
+  }
+
+  .site-intro::before,
+  .site-intro::after { transition-duration: 0.32s; }
+
+  .intro-progress span { animation-duration: 0.58s; }
   .intro-ring { width: 78vw; }
   .intro-ring-two { width: 112vw; }
 }
