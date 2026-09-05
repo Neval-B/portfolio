@@ -265,10 +265,9 @@ function Projects() {
     "GitHub",
   ],
   highlights: [
-    "Developed and deployed a responsive personal portfolio using React, TypeScript, Vite and CSS, with GitHub for version control and Netlify hosting to showcase my projects across desktop and mobile devices",
-    "Organised project content into typed TypeScript objects rendered through reusable React components, reducing duplicated markup and making future projects easier to add",
-    "Implemented active navigation and scroll-reveal animations with IntersectionObserver, using localStorage to remember motion preferences and give visitors control over the website's animations",
-    "Built screenshot galleries using React state, keyboard event handling, image preloading and CSS crossfades, preventing layout shifts while providing smooth and accessible navigation",
+    "Built and deployed a responsive portfolio using React, TypeScript, Vite and CSS, rendering typed project data through reusable components to keep content consistent and easier to maintain across devices",
+    "Implemented scroll-aware navigation with IntersectionObserver, persistent motion controls with localStorage, and accessible image galleries using React state, keyboard handling and preloading to prevent layout shifts",
+    "Configured Playwright end-to-end tests across Chromium, Firefox, WebKit and mobile viewports, validating navigation, motion controls, galleries and responsive layouts to prevent regressions",
   ],
   icons: [
     <SiVite />,
