@@ -11,6 +11,7 @@ import {
   FaExternalLinkAlt,
   FaCode,
   FaFutbol,
+  FaUtensils,
 } from "react-icons/fa";
 
 import {
@@ -28,6 +29,10 @@ import {
   SiExpress,
   SiPostgresql,
   SiPrisma,
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiPwa,
 } from "react-icons/si";
 
 import {
@@ -42,6 +47,7 @@ import "../styles/Projects.css";
 function Projects() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [pitchBriefImageIndex, setPitchBriefImageIndex] = useState(0);
+  const [flavorQuestImageIndex, setFlavorQuestImageIndex] = useState(0);
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [lightbox, setLightbox] = useState<{
     images: string[];
@@ -73,6 +79,16 @@ function Projects() {
     "/img/scrabble/scrab-6.jpg",
     "/img/scrabble/scrab-7.jpg",
     "/img/scrabble/scrab-8.jpg",
+    "/img/scrabble/scrab-9.jpg",
+  ];
+
+  const flavorQuestScreenshots = [
+    "/img/FlavorQuest/fq1.jpg",
+    "/img/FlavorQuest/fq2.jpg",
+    "/img/FlavorQuest/fq3.jpg",
+    "/img/FlavorQuest/fq4.jpg",
+    "/img/FlavorQuest/fq5.jpg",
+    "/img/FlavorQuest/fq6.jpg",
   ];
 
   const nextImage = () => {
@@ -100,6 +116,20 @@ function Projects() {
     setPitchBriefImageIndex((previousIndex) =>
       previousIndex === 0
         ? pitchBriefScreenshots.length - 1
+        : previousIndex - 1
+    );
+  };
+
+  const nextFlavorQuestImage = () => {
+    setFlavorQuestImageIndex(
+      (previousIndex) => (previousIndex + 1) % flavorQuestScreenshots.length
+    );
+  };
+
+  const previousFlavorQuestImage = () => {
+    setFlavorQuestImageIndex((previousIndex) =>
+      previousIndex === 0
+        ? flavorQuestScreenshots.length - 1
         : previousIndex - 1
     );
   };
@@ -235,10 +265,10 @@ function Projects() {
     "GitHub",
   ],
   highlights: [
-    "Built a component-based frontend using React and TypeScript to create reusable and maintainable page sections",
-    "Developed responsive layouts using CSS media queries to support desktop, tablet and mobile screen sizes",
-    "Created interactive project showcases with technology badges, external links and a screenshot carousel",
-    "Used GitHub for version control and deployed the production website through Netlify",
+    "Developed and deployed a responsive personal portfolio using React, TypeScript, Vite and CSS, with GitHub for version control and Netlify hosting to showcase my projects across desktop and mobile devices",
+    "Organised project content into typed TypeScript objects rendered through reusable React components, reducing duplicated markup and making future projects easier to add",
+    "Implemented active navigation and scroll-reveal animations with IntersectionObserver, using localStorage to remember motion preferences and give visitors control over the website's animations",
+    "Built screenshot galleries using React state, keyboard event handling, image preloading and CSS crossfades, preventing layout shifts while providing smooth and accessible navigation",
   ],
   icons: [
     <SiVite />,
@@ -255,7 +285,7 @@ function Projects() {
     architecture: false,
   },
 },
-      
+
     {
       title: "IBM SkillsBuild Companion App",
       icon: <FaUsers />,
@@ -292,34 +322,67 @@ function Projects() {
       },
   },
 
+    {
+      title: "FlavorQuest",
+      icon: <FaUtensils />,
+      description:
+        "A responsive Leicester restaurant-discovery website that helps users find places to eat by flavour, dietary preference, restaurant name or dish.",
+      tech: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PWA",
+        "JSON",
+        "Service Workers",
+        "Cache API",
+        "Responsive Design",
+      ],
+      highlights: [
+        "Built a responsive Leicester restaurant-discovery website using semantic HTML, CSS and JavaScript, delivering an accessible and consistent experience across desktop and mobile devices",
+        "Loaded structured restaurant data from JSON and created real-time search with combined flavour and dietary filters in JavaScript, making listings easy to explore and maintain",
+        "Implemented Progressive Web App functionality with a web app manifest, service worker and Cache API, enabling installation, offline access and faster repeat visits",
+      ],
+      icons: [
+        <SiHtml5 />,
+        <SiCss />,
+        <SiJavascript />,
+        <SiPwa />,
+      ],
+      caseStudy: {
+        challenge: "Help users explore Leicester restaurants without searching through long, unstructured lists.",
+        approach: "I used semantic HTML, responsive CSS and JavaScript to render structured JSON data, combine live search with flavour and dietary filters, and cache key assets through a service worker.",
+        result: "An accessible restaurant-discovery experience that works across screen sizes, supports installation and remains available offline.",
+        architecture: false,
+      },
+    },
+
   {
       title: "Scrabble Game",
       icon: <FaGamepad />,
       description:
-        "A desktop Scrabble game developed using Python and Pygame, featuring multiple gameplay modes, rule validation, configurable timers and an automated computer opponent.",
+        "A Python and Pygame Scrabble game available on desktop and the web, featuring local multiplayer, three computer-opponent difficulty levels and automated rule validation.",
       tech: [
         "Python",
         "Pygame",
         "OOP",
-        "DAWG",
         "Algorithms",
-        "Game Logic",
+        "Pygbag",
+        "WebAssembly",
+        "pytest",
       ],
       highlights: [
-        "Built a modular desktop game using Python, Pygame and object-oriented programming principles",
-        "Implemented player-versus-player and player-versus-computer game modes with easy, medium and hard difficulty levels",
-        "Integrated a DAWG data structure for efficient dictionary validation and prefix-based word searching",
-        "Developed rule-validation algorithms for tile alignment, board connectivity, first-move placement and multiword formation",
-        "Implemented a custom scoring engine supporting DL, TL, DW and TW bonuses, crosswords, blank tiles and 50-point bingo scoring",
-        "Optimised computer-opponent move generation by searching valid positions adjacent to existing board tiles",
-        "Developed configurable total-game and per-turn timers with automatic passing and end-game score calculation",
+        "Built a modular Scrabble game with Python, Pygame and object-oriented programming, supporting local player-versus-player and three computer-opponent difficulty levels for varied gameplay",
+        "Leveraged Python sets, dictionaries and targeted search algorithms to build an efficient computer-opponent move generator, reducing unnecessary candidate checks",
+        "Adapted the game for browser deployment with Pygbag/WebAssembly and asynchronous game loops, enabling users to play directly through a web browser",
+        "Used pytest to create automated unit tests, helping prevent regressions and verify core gameplay logic",
       ],
       icons: [<FaPython />, <FaGamepad />],
       hasSlider: true,
+      demoLink: "https://nb-scrabble.netlify.app/",
       caseStudy: {
-        challenge: "Reproduce Scrabble rules accurately while generating valid computer moves quickly enough for responsive desktop gameplay.",
-        approach: "I separated board, scoring and turn logic into Python classes, used a DAWG for prefix search, and constrained AI move generation to viable board positions.",
-        result: "A configurable Pygame application supporting two game modes, three AI difficulties, complete premium-square scoring and automatic timer handling.",
+        challenge: "Reproduce Scrabble rules accurately while generating computer moves quickly enough for responsive desktop and browser gameplay.",
+        approach: "I separated board, scoring and turn logic into Python classes, used targeted searches with sets and dictionaries, and adapted the game to asynchronous browser loops.",
+        result: "A tested, browser-playable Pygame application with local multiplayer, three computer-opponent difficulty levels and reliable core gameplay logic.",
         architecture: false,
       },
     },
@@ -400,7 +463,13 @@ function Projects() {
       <div className="projects-grid">
         {projects.map((project, projectIndex) => (
           <article
-            className="project-card"
+            className={`project-card ${
+              project.title === "PitchBrief" ||
+              project.title === "FlavorQuest" ||
+              project.title === "Scrabble Game"
+                ? "project-card-featured"
+                : ""
+            }`}
             key={project.title}
             data-number={String(projectIndex + 1).padStart(2, "0")}
             data-reveal
@@ -451,7 +520,7 @@ function Projects() {
               </div>
             </div>
 
-            {(project.title === "PitchBrief" || project.title === "Scrabble Game") && (
+            {project.title === "PitchBrief" && (
               <button
                 type="button"
                 className="case-study-toggle"
@@ -466,9 +535,7 @@ function Projects() {
                 <span>
                   {expandedProject === project.title
                     ? "Return to overview"
-                    : project.title === "PitchBrief"
-                      ? "Explore the system behind PitchBrief"
-                      : "Explore the Scrabble game engine"}
+                    : "Explore the system behind PitchBrief"}
                 </span>
                 <span aria-hidden="true">{expandedProject === project.title ? "↑" : "↘"}</span>
               </button>
@@ -476,17 +543,17 @@ function Projects() {
 
             {expandedProject === project.title && (
               <div className="project-case-study" id={`case-study-${projectIndex}`}>
-                <div className={`case-study-grid ${project.title === "Scrabble Game" ? "scrabble-study" : ""}`}>
+                <div className="case-study-grid">
                   <section>
-                    <span>{project.title === "PitchBrief" ? "The product problem" : "Rules worth getting right"}</span>
+                    <span>The product problem</span>
                     <p>{project.caseStudy.challenge}</p>
                   </section>
                   <section>
-                    <span>{project.title === "PitchBrief" ? "Behind the experience" : "Inside the game engine"}</span>
+                    <span>Behind the experience</span>
                     <p>{project.caseStudy.approach}</p>
                   </section>
                   <section>
-                    <span>{project.title === "PitchBrief" ? "What I delivered" : "The finished experience"}</span>
+                    <span>What I delivered</span>
                     <p>{project.caseStudy.result}</p>
                   </section>
                 </div>
@@ -578,6 +645,78 @@ function Projects() {
                       onClick={() => setPitchBriefImageIndex(index)}
                       aria-label={`Show PitchBrief screenshot ${index + 1}`}
                       aria-current={pitchBriefImageIndex === index ? "true" : undefined}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {project.title === "FlavorQuest" && (
+              <div className="screenshot-gallery flavorquest-gallery">
+                <div className="gallery-heading-row">
+                  <h4>FlavorQuest Preview</h4>
+                  <span>Tap the image to view full screen</span>
+                </div>
+
+                <div className="slider-container">
+                  <button
+                    type="button"
+                    className="slider-arrow"
+                    onClick={previousFlavorQuestImage}
+                    aria-label="Show previous FlavorQuest screenshot"
+                  >
+                    ‹
+                  </button>
+
+                  <button
+                    type="button"
+                    className="slider-image-frame slider-open-button"
+                    onClick={() =>
+                      openLightbox(
+                        flavorQuestScreenshots,
+                        flavorQuestImageIndex,
+                        "FlavorQuest"
+                      )
+                    }
+                    aria-label={`Open FlavorQuest screenshot ${flavorQuestImageIndex + 1} full screen`}
+                  >
+                    <span className="slider-image-stack">
+                      {flavorQuestScreenshots.map((image, index) => (
+                        <img
+                          key={image}
+                          src={image}
+                          alt={`FlavorQuest screenshot ${index + 1}`}
+                          className={`slider-image ${
+                            flavorQuestImageIndex === index ? "active-image" : ""
+                          }`}
+                          aria-hidden={flavorQuestImageIndex !== index}
+                        />
+                      ))}
+                    </span>
+                    <span className="open-image-hint" aria-hidden="true">Open full screen ↗</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="slider-arrow"
+                    onClick={nextFlavorQuestImage}
+                    aria-label="Show next FlavorQuest screenshot"
+                  >
+                    ›
+                  </button>
+                </div>
+
+                <div className="slider-dots">
+                  {flavorQuestScreenshots.map((_, index) => (
+                    <button
+                      type="button"
+                      key={index}
+                      className={`dot ${
+                        flavorQuestImageIndex === index ? "active-dot" : ""
+                      }`}
+                      onClick={() => setFlavorQuestImageIndex(index)}
+                      aria-label={`Show FlavorQuest screenshot ${index + 1}`}
+                      aria-current={flavorQuestImageIndex === index ? "true" : undefined}
                     />
                   ))}
                 </div>
